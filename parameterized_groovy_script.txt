@@ -1,0 +1,6 @@
+#This script needs to add in jenkins active choice parameterized job to search the image from GCR
+def getBranches = ("gcloud container images list-tags us.gcr.io/GCP_PROJECT/GCR_FOLDER --filter=search_string").execute()
+def branchNameList = getBranches.text.readLines().collect {
+  it.split()[1]
+}
+return branchNameList
